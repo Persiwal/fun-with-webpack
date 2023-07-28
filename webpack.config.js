@@ -20,7 +20,12 @@ module.exports = {
             maxSize: 3 * 1024 // 3 kilobytes
           }
         }
-      }
+      },
+      //loads txt file as a js string
+      { test: /\.txt/, type: 'asset/source' },
+      //css-loader reads content of css file and return this content
+      //style-loader take this conteont and injects it into the page using style tags
+      { test: /\.css$/, use: ['style-loader', 'css-loader'] }
     ]
   }
 };
