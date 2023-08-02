@@ -19,6 +19,10 @@
   },
   "homepage": "https://github.com/Persiwal/fun-with-webpack#readme",
   "devDependencies": {
+    "@babel/core": "^7.22.9",
+    "@babel/plugin-proposal-class-properties": "^7.18.6",
+    "@babel/preset-env": "^7.22.9",
+    "babel-loader": "^9.1.3",
     "css-loader": "^6.8.1",
     "sass": "^1.64.2",
     "sass-loader": "^13.3.2",
