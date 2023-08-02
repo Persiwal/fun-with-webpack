@@ -25,7 +25,8 @@ module.exports = {
       { test: /\.txt/, type: 'asset/source' },
       //css-loader reads content of css file and return this content
       //style-loader take this conteont and injects it into the page using style tags
-      { test: /\.css$/, use: ['style-loader', 'css-loader'] }
+      { test: /\.css$/, use: ['style-loader', 'css-loader'] },
+      { test: /\.scss$/, use: ['style-loader', 'css-loader', 'sass-loader'] }
     ]
   }
 };
