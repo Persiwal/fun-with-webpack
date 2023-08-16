@@ -2,16 +2,17 @@ const path = require('path');
 const TerserPlugin = require('terser-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: './src/index.js',
   output: {
     filename: 'bundle.[contenthash].js',
     path: path.resolve(__dirname, './dist'),
-    publicPath: 'dist/', //this is not needed since webpack5 but can be used in some custom cases
+    publicPath: '' //this is not needed since webpack5 but can be used in some custom cases
     //clean: {
-      //dry: true - webpack will log which files should be deleted but not remove them
-      //keep: /\.css/ - decide which files should be kept
+    //dry: true - webpack will log which files should be deleted but not remove them
+    //keep: /\.css/ - decide which files should be kept
     //}
   },
   mode: 'none',
@@ -54,9 +55,10 @@ module.exports = {
   },
   plugins: [
     new TerserPlugin(),
-    new MiniCssExtractPlugin({ filename: 'styles.[contenthash].css' })
+    new MiniCssExtractPlugin({ filename: 'styles.[contenthash].css' }),
     new CleanWebpackPlugin({
       cleanOnceBeforeBuildPatterns: ['**/*'] //remove all files with nested files in folders
-    })
+    }),
+    new HtmlWebpackPlugin()
   ]
 };
