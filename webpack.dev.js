@@ -3,9 +3,12 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: './src/index.js',
+  entry: {
+    'hello-world': './src/index.js',
+    kiwi: './src/kiwi.js'
+  },
   output: {
-    filename: 'bundle.js',
+    filename: '[name].bundle.js',
     path: path.resolve(__dirname, './dist'),
     publicPath: '' //this is not needed since webpack5 but can be used in some custom cases
     //clean: {
@@ -67,10 +70,21 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       title: 'Hello world',
-      //filename: 'subfolder/custom_filename.html', - use custom filename for index.html
       meta: {
         description: 'Some description'
-      }
+      },
+      chunks: ['hello-world'],
+      filename: 'hello-world.html',
+      template: 'index.html'
+    }),
+    new HtmlWebpackPlugin({
+      title: 'Kiwi',
+      meta: {
+        description: 'Some description for kiwi'
+      },
+      chunks: ['kiwi'],
+      filename: 'kiwi.html',
+      template: 'index.html'
     })
   ]
 };
